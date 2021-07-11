@@ -1,0 +1,1087 @@
+2장 
+13쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+# n=1: [(T,), (F,)], n=2: [(T, T), (T, F), (F, T), (F, F)], n=3: [(T, T, T), …, (F, F, F)], …
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', '  p ∧ q')
+print('============')
+for p, q in truth_values(2): # [(T, T), (T, F), (F, T), (F, F)]
+    print(truth(p), truth(q), '    ', truth(p and q))
+
+16쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', '  p ∨ q')
+print('============')
+for p, q in truth_values(2):
+    print(truth(p), truth(q), '    ', truth(p or q))
+
+19쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', '  p ≠ q')
+print('===========')
+for p, q in truth_values(2):
+    print(truth(p), truth(q), '   ', truth(p != q))
+
+21쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', '  p → q')
+print('===========')
+for p, q in truth_values(2):
+    print(truth(p), truth(q), '   ', truth(not p or q))
+
+25쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', '  p ↔ q')
+print('===========')
+for p, q in truth_values(2):
+    print(truth(p), truth(q), '   ', truth(p == q))
+
+28쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p q   ~q   p ^ ~q   ~(p ^ ~q)')
+print('=============================')
+for p, q in truth_values(2):
+    print(truth(p), truth(q), 2*' ', truth(not q), 4*' ',
+          truth(p and not q), 7*' ', truth(not(p and not q)))
+
+30쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p q r   q ^ r   p V (q ^ r)')
+print('=============================')
+for p, q, r in truth_values(3):
+    print(truth(p), truth(q), truth(r), 3*' ', truth(q and r), 6*' ',
+          truth(p or (q and r)))
+
+54쪽
+
+def truth(p):
+    if p:
+        return 'T'
+    else:
+        return 'F'
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+print('p', 'q', 'r', 's', '  p → q', '  r → s',
+      '  (p → q) ∧ (r → s)'
+      , '  p ∨ r', '  q ∨ s')
+print('==================================================================')
+for p, q, r, s in truth_values(4):
+    print(truth(p), truth(q), truth(r), truth(s),
+          '   ', truth(not p or q),
+          '      ', truth(not r or s),
+          '             ', truth((not p or q) and (not r or s)),
+          '             ', truth(p or r),
+          '      ', truth(q or s))
+
+3장
+7쪽
+
+t = [x for x in range(0, 10000) if x*x == 9] # 조건 제시법 𝑻= {𝒙 | 𝒙∈ {0, …, 9999} and 𝒙^𝟐=𝟗}
+t = set(t)
+print('{x | x in N, x*x = 9} =', t)
+
+s = list(range(-10000, 10000))
+t = [x for x in s if 3 < x < 7]  # 조건 제시법 𝑺={−𝟏𝟎𝟎𝟎𝟎, …, 𝟗𝟗𝟗𝟗},  𝑻= {𝒙 | 𝒙∈𝑺 and 𝟑<𝒙<𝟕}
+t = set(t)
+print('{x | x in Z, 3 < x < 7} =', t)
+
+s = set(range(-10000, 10000))
+t = {x for x in s if 3 < abs(x) < 7} # 조건 제시법 𝑻= {𝒙 | 𝒙∈𝑺 and 𝟑<|𝒙|<𝟕}
+print('{x | x in Z, 3 < |x| < 7} =', t) 
+
+# 조건 제시법 𝑨={𝟏, …, 𝟗𝟗𝟗𝟗},  𝑻= {(𝒙, 𝒚) | 𝒙, 𝒚 ∈𝑺 and  𝒙+𝒚=𝟓}
+t = {(x, y) for x in range(1, 10000) for y in range(1, 10000) if x + y == 5}
+print('{(x, y) | x, y in Z, x + y = 5} =', t)
+
+14쪽
+
+t = {x for x in range(-10000, 10000) if x*x - 5 == 0}
+print('{x | x in Z, x*x - 5 = 0} =', t)
+
+18쪽
+
+def truth_values(n):
+    if n == 0:
+        return []
+    tv = [(True,), (False,)]
+    for i in range(1, n):
+        oldtv = tv
+        tv = []
+        for t in oldtv:
+            tv.extend([t + (True,), t + (False,)])
+    return tv
+
+n = 3  # Sn의 모든 부분 집합을 출력
+for t in truth_values(n):
+    s = []
+    for i in range(n):
+        if t[i]:
+            s.append(i+1)
+    print(set(s))	# 리스트 s를 집합으로 변환하여 출력
+
+19쪽
+
+U = {1, 2, 3, 4, 5}
+A = {1, 2, 3}
+B = {3, 5}
+C = {1, 2, 3, 4, 5}
+
+print("A' =", U - A)
+print("B' =", U - B)
+print("C' =", U - C)
+
+26쪽
+
+A = {1, 2, 3, 4}
+B = {1, 3, 5, 7}
+
+print("A U B =", A | B)
+print("A ∩ B =", A & B)
+print("A - B =", A - B)
+print("A ⊕ B =", A ^ B)
+
+29쪽
+
+def prod(X, Y):
+    return {(x, y) for x in X for y in Y}
+
+A = {1, 2, 3, 4}
+B = {1, 3, 5, 7, 9}
+print('A x B =', prod(A, B))
+print('|A x B| =', len(prod(A, B)))
+print('A x B =', sorted(prod(A, B)))
+
+4장
+26쪽
+
+def divisors(n):
+    d = []
+    for k in range(1, 1 + n // 2):
+        if n % k == 0:
+            d += [k]
+    return d
+
+def is_perfect(n):
+     return n == sum(divisors(n))
+
+print('perfect numbers:')
+for n in range(2, 100000):
+    if is_perfect(n):
+        print(n, divisors(n))
+
+42쪽
+
+def sum_n(n):
+    total = 0
+    i = 1
+    assert i == 1 and total == 0, "i != 1 or total != 0"
+    while i <= n:
+        assert i <= n and total == i * (i - 1) // 2, 'E1'
+        total += i
+        assert i <= n and total == i * (i + 1) // 2, 'E2'
+        i += 1
+    assert i == n + 1 and total == n * (n + 1) // 2, 'E3'
+    return total
+
+for n in [10, 20, 100]:
+    print(sum_n(n))
+
+7장
+23쪽
+V = list(range(1,6))
+E = [(1,3), (1,4), (1,5), (2,3), (2,4), (2,5)]
+
+print('Adjacency Matrix for', E)
+for i in V:
+    for j in V:
+        if (i,j) in E or (j,i) in E:
+            print(1, end=' ')
+        else:
+            print(0, end=' ')
+    print()
+
+print()
+
+print('Adjacency List for', E)
+for i in V:
+    print(i, end='')
+    for j in V:
+        if (i,j) in E or (j,i) in E:
+            print(' ->', j, end ='')
+    print()
+
+24쪽
+
+#V = list(range(1,6))
+#E = [(1,3), (1,4), (1,5), (2,3), (2,4), (2,5)]
+n = 5
+V = list(range(n))
+E = [(0,2), (0,3), (0,4), (1,2), (1,3), (1,4)]
+
+#AM = [[0] * n] * n : wrong
+AM = []
+for i in range(n):
+    AM.extend([[0] * n])
+    
+for i, j in E:
+    AM[i][j] = AM[j][i] = 1
+    
+print('Adjacency Matrix for', E)
+print(AM)
+for i in V:
+    print(AM[i])
+
+25쪽
+
+n = 5
+V = list(range(n))
+E = [(0,2), (0,3), (0,4), (1,2), (1,3), (1,4)]
+
+AL = []
+for i in range(n):
+    AL.extend([[] * n])
+
+for i, j in E:
+    AL[i].append(j)
+    AL[j].append(i)
+    
+print('Adjacency List for', E)
+print(AL)
+for i in V:
+    print(AL[i])
+
+27쪽
+
+V = list(range(1,7))
+E = [(2,1), (6,1), (5,1), (6,2), (6,5), (3,2), (2,4), (3,6), (4,3), (4,6), (4,5)]
+
+print('Adjacency Matrix for', E)
+for i in V:
+    for j in V:
+        if (i,j) in E: # or (j,i) in E :
+            print(1, end=' ')
+        else:
+            print(0, end=' ')
+    print()
+
+print()
+
+print('Adjacency List for', E)
+for i in V:
+    print(i, end='')
+    for j in V:
+        if (i,j) in E: # or (j,i) in E :
+            print(' ->', j, end ='')
+    print()
+
+49쪽
+
+n = 6
+V = list(range(n))
+E = [(0,1,50), (0,2,10), (0,4,45), (1,2,15), (1,4,10), (2,0,20), (2,3,15), (3,1,20), (3,4,35), (4,3,30), (5,3,3)]
+large = 100000000
+
+C = []
+for i in V:
+    C.extend([[large] * n])
+    C[i][i] = 0
+    
+for i, j, d in E:
+    C[i][j] = d
+
+S = [0]
+D = C[0]
+P = [0] * n
+tree = []
+for i in range(1,n):
+    small = large
+    for v in set(V) - set(S):
+        if D[v] < small:
+            small = D[v]
+            w = v
+    if small < large:
+        S.append(w)
+        tree.append((P[w],w))
+    for v in set(V) - set(S):
+        if D[v] > D[w] + C[w][v]:
+            D[v] = D[w] + C[w][v]
+            P[v] = w
+
+print('Single-source shortest tree:')
+print('distances =', D)
+print('tree =', tree)
+
+52쪽
+
+n = 5
+V = list(range(1,n+1))
+E = [(1,2,10), (1,4,30), (1,5,100), (2,3,50), (3,5,10), (4,3,20), (4,5,60)]
+large = 100000000
+
+C = []
+for i in V:
+    C.extend([[large] * n])
+    C[i-1][i-1] = 0
+    
+for i, j, d in E:
+    C[i-1][j-1] = d
+
+S = [1]; D = C[0]; P = [1] * n
+tree = []
+
+print('STEP 0   S =', S, (15 - len(str(S)))*' ', '  w = -', '  D =', D[1:])
+
+for i in range(1,n):
+    small = large
+    for v in set(V) - set(S):
+        if D[v-1] < small:
+            small = D[v-1]
+            w = v
+    if small < large:
+        S.append(w)
+        tree.append((P[w-1],w))
+    for v in set(V) - set(S):
+        if D[v-1] > D[w-1] + C[w-1][v-1]:
+            D[v-1] = D[w-1] + C[w-1][v-1]
+            P[v-1] = w
+    print('STEP', i, '  S =', sorted(S), (15 - len(str(S)))*' ', '  w =', w, '  D =', D[1:])
+
+print('Single-source shortest path tree:')
+print('distances =', D)
+print('tree =', tree)
+
+54쪽
+
+n = 8
+V = [0, 1, 2, 3, 4, 5, 6, 7]
+E = [(0, 1, 14), (0, 3, 53), (0, 2, 50), 
+       (0, 6, 14), (1, 7, 19), (7, 5, 42),
+       (1, 4, 6), (1, 2, 34), (5, 2, 7), (4, 5, 18),  
+       (1, 3, 26), (7, 2, 13)]
+large = 100000000
+
+C = []
+for i in V:
+    C.extend([[large] * n])
+    C[i][i] = 0
+    
+for i, j, d in E:
+    C[i][j] = d
+    C[j][i] = d
+
+S = [0]
+D = C[0]
+P = [0] * n
+tree = []
+
+for i in range(1,n):
+    small = large
+    for v in set(V) - set(S):
+        if D[v] < small:
+            small = D[v]
+            w = v
+    if small < large:
+        S.append(w)
+        tree.append((P[w],w))
+    for v in set(V) - set(S):
+        if D[v] > D[w] + C[w][v]:
+            D[v] = D[w] + C[w][v]
+            P[v] = w
+    print('STEP', i, '  S =', sorted(S), (15 - len(str(S)))*' ', '  w =', w, '  D =', D[1:])
+
+print('Single-source shortest path tree:')
+print('distances =', D)
+print('tree =', tree)
+
+56쪽
+
+n = 4
+V = set(range(n))
+large = 100000000
+
+C = [[0, 5, 6, 8], [5, 0, 7, 10], 
+        [6, 7, 0, 3], [8, 10, 3, 0]]
+vp = 1; w = 0; M = [vp]
+    
+for i in range(1,n):
+    small = large
+    for v in V - set(M):
+        if C[vp][v] <= small:
+            small = C[vp][v]
+            u = v
+    w += small
+    M.append(u)
+    vp = u
+M.append(1)
+w = w + C[vp][1]
+    
+print('Traveling Salesperson Problem:')
+print('distances =', w)
+print('circuit =', M)
+
+59쪽
+
+def dfs(v):
+     visited[v] = True
+     print(v, end = ' ')
+     for w in AL[v]:
+          if (not visited[w]):
+               dfs(w) 
+
+61쪽
+
+n = 8
+V = list(range(1, n + 1))
+E = [(1,2), (1,3), (2,4), (2,5), (3,6),
+     (3,7), (4,8), (5,8), (6,8), (7,8)]
+
+AL = []
+for i in range(n + 1):
+    AL.extend([[] * (n + 1)])
+
+for i, j in E:
+    AL[i].append(j)
+    AL[j].append(i)
+
+visited = [False] * (n + 1)
+dfs(1)
+
+63쪽
+
+def bfs(start, n):
+     queued = [False] * (n + 1)
+     queue = [start]
+     queued[start] = True
+     while queue:
+          v = queue.pop(0)
+          print(v, end = ' ')
+          for w in AL[v]:
+               if (not queued[w]):
+                    queue.append(w) 
+               queued[w] = True 
+
+n = 8
+V = list(range(1, n + 1))
+E = [(1,2), (1,3), (2,4), (2,5), (3,6),
+     (3,7), (4,8), (5,8), (6,8), (7,8)]
+
+AL = []
+for i in range(n + 1):
+    AL.extend([[] * (n + 1)])
+
+for i, j in E:
+    AL[i].append(j)
+    AL[j].append(i)
+
+bfs(start = 1, n = 8)
+
+8장
+37쪽
+
+C 언어 코드
+
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct treenode {
+    struct treenode* leftchild;
+    char data;
+    struct treenode* rightchild;
+} TREE;
+
+TREE* sample_tree() {
+    TREE *a, *b, *c, *d, *e;
+
+    a = malloc(sizeof(struct treenode));
+    a->data = 'A';
+    b = malloc(sizeof(struct treenode));
+    b->data = 'B';
+    c = malloc(sizeof(struct treenode));
+    c->data = 'C';
+    d = malloc(sizeof(struct treenode));
+    d->data = 'D';
+    e = malloc(sizeof(struct treenode));
+    e->data = 'E';
+
+    a->leftchild = b;
+    a->rightchild = c;
+    b->leftchild = d;
+    b->rightchild = e;
+    c->leftchild = NULL;
+    c->rightchild = NULL;
+    d->leftchild = NULL;
+    d->rightchild = NULL;
+    e->leftchild = NULL;
+    e->rightchild = NULL;
+
+    return a;
+}
+
+void inorder(TREE* currentnode) {
+    if (currentnode != NULL) {
+        inorder(currentnode->leftchild);
+        printf("%3c", currentnode->data);
+        inorder(currentnode->rightchild);
+    }
+}
+
+void preorder(TREE* currentnode) {
+    if (currentnode != NULL) {
+        printf("%3c", currentnode->data);
+        preorder(currentnode->leftchild);
+        preorder(currentnode->rightchild);
+    }
+}
+
+void postorder(TREE* currentnode) {
+    if (currentnode != NULL) {
+        postorder(currentnode->leftchild);
+        postorder(currentnode->rightchild);
+        printf("%3c", currentnode->data);
+    }
+}
+
+main() {
+    TREE* root = sample_tree();
+
+    printf("\n\n Inorder traversal: ");
+    inorder(root);
+
+    printf("\n\n Preorder traversal: ");
+    preorder(root);
+
+    printf("\n\n Postorder traversal: ");
+    postorder(root);
+
+    printf("\n");
+}
+
+파이썬 코드
+
+class treenode:
+    def __init__(self, value):
+        self.leftchild = None
+        self.rightchild = None
+        self.data = value
+
+def sample_tree():
+    a = treenode('A')
+    b = treenode('B')
+    c = treenode('C')
+    d = treenode('D')
+    e = treenode('E')
+    a.leftchild = b
+    a.rightchild = c
+    b.leftchild = d
+    b.rightchild = e
+    return a
+
+def inorder(currentnode):
+    if currentnode:
+        inorder(currentnode.leftchild)
+        print(currentnode.data, end='  ')
+        inorder(currentnode.rightchild)
+
+def preorder(currentnode):
+    if currentnode:
+        print(currentnode.data, end='  ')
+        preorder(currentnode.leftchild)
+        preorder(currentnode.rightchild)
+
+def postorder(currentnode):
+    if currentnode:
+        postorder(currentnode.leftchild)
+        postorder(currentnode.rightchild)
+        print(currentnode.data, end='  ')
+
+root = sample_tree()
+print('\n Inorder Traversal: ', end='')
+inorder(root)
+print('\n Preorder Traversal: ', end='')
+preorder(root)
+print('\n Postorder Traversal: ', end='')
+postorder(root)
+print()
+
+38쪽
+
+class treenode:
+    def __init__(self, value):
+        self.leftchild = None
+        self.rightchild = None
+        self.data = value
+
+def sample_tree():
+    a = treenode('A')
+    b = treenode('B')
+    c = treenode('C')
+    d = treenode('D')
+    e = treenode('E')
+    a.leftchild = b
+    a.rightchild = c
+    b.leftchild = d
+    b.rightchild = e
+    return a
+
+def inorder(currentnode):
+    if currentnode:
+        inorder(currentnode.leftchild)
+        print(currentnode.data, end='  ')
+        inorder(currentnode.rightchild)
+
+def preorder(currentnode):
+    if currentnode:
+        print(currentnode.data, end='  ')
+        preorder(currentnode.leftchild)
+        preorder(currentnode.rightchild)
+
+def postorder(currentnode):
+    if currentnode:
+        postorder(currentnode.leftchild)
+        postorder(currentnode.rightchild)
+        print(currentnode.data, end='  ')
+
+root = sample_tree()
+print('\n Inorder Traversal: ', end='')
+inorder(root)
+print('\n Preorder Traversal: ', end='')
+preorder(root)
+print('\n Postorder Traversal: ', end='')
+postorder(root)
+print()
+
+44쪽
+
+L = 100000000
+
+def Prim(V, C):
+    T = []; U = {1}
+    while (U != V):
+        small = L
+        for u in U:
+            for v in V - U:
+                if C[u-1][v-1] < small:
+                    small = C[u-1][v-1]
+                    edge = (u,v)
+        T.append(edge)
+        U = U | {edge[1]}
+    return T
+    
+n = 6
+V = set(range(1,n+1))
+C = [[0, 6, 1, 5, L, L],
+     [6, 0, 5, L, 3, L],
+     [1, 5, 0, 5, 6, 4],
+     [5, L, 5, 0, L, 2],
+     [L, 3, 6, L, 0, 6],
+     [L, L, 4, 2, 6, 0]]
+
+T = Prim(V, C)
+cost = sum([C[u-1][v-1] for u, v in T])
+print('MST(Prim):', T, 'with cost:', cost)
+
+48쪽
+
+L = 100000000
+
+def Kruskal(V, C):
+    E = []
+    for u in V:
+        for v in V:
+            if u < v and C[u-1][v-1] < L:
+                E.append((u, v, C[u-1][v-1]))
+    E.sort(reverse = True, key = lambda x: x[2])
+    
+    T = []
+    M = V[:]
+    while len(T) < len(V) - 1:
+        u, v, c = E.pop()
+        if (M[u-1] == M[v-1]):
+            continue
+        for w in V:
+            if M[w-1] == M[v-1]:
+                M[w-1] = M[u-1]
+        T.append((u,v))
+    return T
+
+n = 6
+V = list(range(1,n+1))
+C = [[L, 6, 1, 5, L, L],
+     [6, L, 5, L, 3, L],
+     [1, 5, L, 5, 6, 4],
+     [5, L, 5, L, L, 2],
+     [L, 3, 6, L, L, 6],
+     [L, L, 4, 2, 6, L]]
+
+T = Kruskal(V, C)
+cost = sum([C[u-1][v-1] for u, v in T])
+print('MST(Kruskal):', T, 'with cost:', cost)
+
+9장
+28쪽
+
+import turtle
+myPen = turtle.Turtle()
+myPen.ht()
+myPen.speed(5)
+myPen.pencolor('orange')
+
+#size of triangle
+points = [[-175, -125], [0, 175], [175, -125]]
+
+#find midpoint
+def getMid(p1,p2):
+    return ( (p1[0]+p2[0]) / 2, (p1[1] + p2[1]) / 2)
+
+def triangle(points, depth):
+    myPen.up()
+    myPen.goto(points[0][0],points[0][1])
+    myPen.down()
+    myPen.goto(points[1][0],points[1][1])
+    myPen.goto(points[2][0],points[2][1])
+    myPen.goto(points[0][0],points[0][1])
+
+    if depth>0:
+        triangle([points[0],
+                      getMid(points[0], points[1]),
+                      getMid(points[0], points[2])],
+                      depth-1)
+        triangle([points[1],
+                      getMid(points[0], points[1]),
+                      getMid(points[1], points[2])],
+                      depth-1)
+        triangle([points[2],
+                      getMid(points[2], points[1]),
+                      getMid(points[0], points[2])],
+                      depth-1)
+
+triangle(points, 4)
+
+33쪽
+
+# Python code (recursive version)
+def fact(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * fact(n - 1)
+
+for n in [4, 10, 100, 993]:
+    print('fact(%d) = %d' % (n, fact(n)))
+
+34쪽
+
+# Python code (iterative version)
+def fact(n):
+    prod = 1
+    for k in range(2, n+1):
+        prod *= k
+    return prod
+
+for n in [4, 10, 100, 1000, 10000]:
+    print('fact(%d) = %d' % (n, fact(n)))
+
+44쪽
+
+# Python code
+def hanoi_tower(n, a, b, c):
+    if n == 1:
+        print('  [disk %d from %c to %c]' % (n, a, c))
+    else:
+        hanoi_tower(n-1, a, c, b)
+        print('  [disk %d from %c to %c]' % (n, a, c))
+        hanoi_tower(n-1, b, c, a)
+
+for n in [2, 3, 5]:
+    print("Hanoi Tower Solution for %d:" % n)
+    hanoi_tower(n, 'A', 'B', 'C')
+    print()
+
+10장
+31쪽
+
+# 예제 10-2
+import numpy as np
+
+A = np.array([[3, -1], [ 2, 4]])
+B = np.array([[2,  1], [-3, 2]])
+print(A+B)
+
+C = np.array([[3, -1, -5], [2, 3,  4]])
+D = np.array([[5,  1, -1], [2, 1, -1]])
+print(C+D)
+
+32쪽
+
+# 예제 10-4
+import numpy as np
+
+A = np.array([[1, -2, 3], [0, 4, 5]])
+B = np.array([[4, 6, 8], [1, -3, -7]])
+print(2*A - 3*B)
+
+# 예제 10-6
+import numpy as np
+
+A = np.array([[2, 4, -1], [-1, 3, 3], [4, -2, 1], [-3, 0, 2]])
+B = np.array([[4, -2], [-2, 1], [3, -1]])
+print(np.dot(A, B))
+
+55쪽
+
+A = np.array([[1, 2, 3], [2, 1, 3], [3, 1, 2]])
+print(np.linalg.det(A))
+
+67쪽
+
+import numpy as np
+
+A = np.array([	[1, 2, 3], 
+		[2, 3, 5], 
+		[3, -3, 7]])
+print(np.linalg.det(A))
+
+73쪽
+
+import numpy as np
+
+A = np.array([	[3, 4], 
+		[2, 3]])
+print(np.linalg.inv(A))
+
+76쪽
+
+import numpy as np
+
+A = np.array([	[1, 2, 3], [1, 3, 6], [2, 6, 13]])
+b = np.array([1, 3, 5])
+x = np.dot(np.linalg.inv(A), b)
+print(x)
+
+12장
+16쪽 (실행 결과 없음)
+
+# 피보나치 수열
+def fibo(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fibo(n-1) + fibo(n-2)
+
+def hanoi_tower(n, a, b, c):
+    if n == 1:
+        print('from', a, 'to', c)
+    else:
+        hanoi_tower(n-1, a, c, b)
+        print('from', a, 'to', c)
+        hanoi_tower(n-1, b, c, a)
+
+18쪽 (실행 결과 없음)
+
+int seq_search(int array[], int search_num, int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        if (array[i] == search_num)
+            return i;
+    return -1;
+}
+
+22쪽
+
+def binary_search(x, a, n):
+    left = 0; right = n - 1
+    while left <= right:
+        mid = (left + right) // 2
+        print('left/right/mid: %d/%d/%d' % (left, right, mid))
+        if a[mid] < x:
+            left = mid + 1
+        elif a[mid] > x:
+            right = mid - 1
+        else:
+            return mid
+    return -1;
+
+a = [5, 8, 11, 20, 25, 33, 48, 50, 57]
+for x in [11, 5, 15]:
+    k = binary_search(x, a, len(a))
+    if k == -1:
+        print(x, 'Not found!\n')
+    else:
+        print(x, 'Found!\n')
+
+24쪽
+
+def bubble_sort(a, n):
+    for i in range(n):
+        for j in range(n - i - 1):
+            if a[j] > a[j+1]:
+                a[j], a[j+1] = a[j+1], a[j]
+        print('a[]:', a)
+                
+a = [10, 7, 19, 5, 16]
+bubble_sort(a, len(a))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
